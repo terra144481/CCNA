@@ -1,34 +1,49 @@
+1. Rename switch to name = S2  
 ```
 Switch>enable  
 Switch#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Switch(config)#hostname S2
+```
+2. Create password from console (enable user EXEC access)
+```
 S2(config)#line consol 0
 S2(config-line)#password letmein
 S2(config-line)#login
 S2(config-line)#exit
-
+```
+3. Create password from privileged EXEC access
+```
 S2(config)#enable password c1$c0
 
 S2(config)#enable secret itsasecret
-
+```
+4. Create password from VTY.
+```
 S2(config)#line vty 0 15
 S2(config-line)#password cisco
 S2(config-line)#login
 S2(config-line)#exit
-
+```
+6. Create banner.
+```
 2#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
 S2(config)#banner motd #Warning! Authorized access only!#
-
+```
+7. Encrypt passwords.
+```
 S2(config)#service password-encryption
-
+```
+8. Copy config to NVRAM
+```
 S2#copy Running-config startup-config 
 Destination filename [startup-config]? 
 Building configuration...
 [OK]
+```
 
-
+```
 S2#show running-config 
 Building configuration...
 
@@ -133,4 +148,15 @@ line vty 5 15
 end
 ```
 
+Some command from configure:
+```
+show startup-config
+
+copy running-config startup-config
+
+show running-config
+
+erase startup-config
+
+reload  
 
