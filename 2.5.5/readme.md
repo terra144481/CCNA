@@ -43,6 +43,7 @@ Building configuration...
 [OK]
 ```
 
+Output configuration
 ```
 S2#show running-config 
 Building configuration...
@@ -148,7 +149,7 @@ line vty 5 15
 end
 ```
 
-Some command from configure:
+Some commands from configure:
 ```
 show startup-config
 
